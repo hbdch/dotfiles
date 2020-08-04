@@ -108,7 +108,7 @@ alias profile='vim ~/.zshrc'
 alias corona='/home/sahil/Documents/Projects/corona_stats/corona_stats.py | less'
 alias pbuild='/home/sahil/Documents/Projects/corona_stats/publish/pipbuild.sh'
 alias pclean='/home/sahil/Documents/Projects/corona_stats/publish/pipclean.sh'
-alias jup='jupyter notebook 1>/dev/null 2>&1 &'
+alias jup='jupyter notebook 2>/dev/null' 
 alias sim='/home/sahil/Documents/Projects/nand2tetris/tools/HardwareSimulator.sh'
 alias sshpi='ssh pi@192.168.141.176'
 alias sshuci='ssh skatreka@openlab.ics.uci.edu'
@@ -120,6 +120,18 @@ fbin() {
     find /bin/ -name "*$1*";
 }
 
+rm() {
+	mv "$@" ~/.recycle;	
+}
+
+empty() {
+	/usr/bin/rm -r ~/.recycle/*
+}
+
+lstrash() {
+	ls ~/.recycle
+}
+	
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/sahil/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
