@@ -125,7 +125,7 @@ rm() {
 }
 
 empty() {
-	/usr/bin/rm -r ~/.recycle/*
+	/usr/bin/rm -rf ~/.recycle/*
 }
 
 lstrash() {
