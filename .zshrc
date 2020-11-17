@@ -112,7 +112,6 @@ alias jup='jupyter notebook 2>/dev/null'
 alias sim='/home/sahil/Documents/Projects/nand2tetris/tools/HardwareSimulator.sh'
 alias sshpi='ssh pi@192.168.141.176'
 alias sshuci='ssh skatreka@openlab.ics.uci.edu'
-alias sshcori='ssh -Y skatreka@cori.nersc.gov'
 
 #neofetch
 export LS_COLORS="$(vivid generate molokai)"
@@ -125,30 +124,34 @@ rm() {
 }
 
 empty() {
-	/usr/bin/rm -rf ~/.recycle/*
+	sudo /usr/bin/rm -rf ~/.recycle/*
 }
 
 lstrash() {
 	ls ~/.recycle
 }
 	
+#Other binaries/scripts
+export PATH=$PATH:/home/sahil/Applications/
+export PATH=$PATH:/home/sahil/.gem/ruby/2.7.0/bin
+export PATH=$PATH:/opt/cuda/bin
+export PATH=$PATH:/home/sahil/.emacs.d/bin
+
+
+
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/sahil/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/sahil/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/sahil/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/sahil/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/sahil/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/sahil/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/sahil/anaconda3/bin:$PATH"
+        export PATH="/home/sahil/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-export PATH="/home/sahil/anaconda3/bin:$PATH"
 
-#Other binaries
-export PATH=$PATH:/home/sahil/Programs/
-export PATH=$PATH:/home/sahil/.gem/ruby/2.7.0/bin
-export PATH=$PATH:/opt/cuda/bin
