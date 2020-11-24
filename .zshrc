@@ -98,20 +98,26 @@ export EDITOR='vim'
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
 
+#List: /usr/lib/terminfo
+export TERM='gnome-256color'
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-alias refresh='source ~/.zshrc'
-alias profile='vim ~/.zshrc'
+alias zprofile='vim ~/.zshrc'
+alias zrefresh='source ~/.zshrc'
+alias tprofile='vim ~/.tmux.conf'
+alias vprofile='vim ~/.vimrc'
+
 alias corona='/home/sahil/Documents/Projects/corona_stats/corona_stats.py | less'
 alias pbuild='/home/sahil/Documents/Projects/corona_stats/publish/pipbuild.sh'
 alias pclean='/home/sahil/Documents/Projects/corona_stats/publish/pipclean.sh'
 alias jup='jupyter notebook 2>/dev/null' 
 alias sim='/home/sahil/Documents/Projects/nand2tetris/tools/HardwareSimulator.sh'
-alias sshpi='ssh pi@192.168.141.176'
 alias sshuci='ssh skatreka@openlab.ics.uci.edu'
+#alias tmux='TERM=gnome-256color tmux'
 
 #neofetch
 export LS_COLORS="$(vivid generate molokai)"
