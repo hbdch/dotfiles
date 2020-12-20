@@ -98,8 +98,7 @@ export EDITOR='vim'
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
 
-#List: /usr/lib/terminfo
-export TERM='gnome-256color'
+#List of options for TERM variable: /usr/lib/terminfo
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -110,16 +109,17 @@ alias zprofile='vim ~/.zshrc'
 alias zrefresh='source ~/.zshrc'
 alias tprofile='vim ~/.tmux.conf'
 alias vprofile='vim ~/.vimrc'
+alias aprofile='vim ~/.config/alacritty/alacritty.yml'
+alias iprofile='vim ~/.config/i3/config'
 
 alias corona='/home/sahil/Documents/Projects/corona_stats/corona_stats.py | less'
 alias pbuild='/home/sahil/Documents/Projects/corona_stats/publish/pipbuild.sh'
 alias pclean='/home/sahil/Documents/Projects/corona_stats/publish/pipclean.sh'
 alias jup='jupyter notebook 2>/dev/null' 
 alias sim='/home/sahil/Documents/Projects/nand2tetris/tools/HardwareSimulator.sh'
-alias sshuci='ssh skatreka@openlab.ics.uci.edu'
-#alias tmux='TERM=gnome-256color tmux'
+alias sus="systemctl suspend"
 
-#neofetch
+
 export LS_COLORS="$(vivid generate molokai)"
 fbin() {
     find /bin/ -name "*$1*";
@@ -143,8 +143,7 @@ export PATH=$PATH:/home/sahil/.gem/ruby/2.7.0/bin
 export PATH=$PATH:/opt/cuda/bin
 export PATH=$PATH:/home/sahil/.emacs.d/bin
 
-
-
+neofetch
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

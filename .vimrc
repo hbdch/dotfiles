@@ -5,6 +5,7 @@ set number
 syntax on
 set tabstop=4
 set shiftwidth=2
+set expandtab
 set cursorline
 set showcmd
 set incsearch
