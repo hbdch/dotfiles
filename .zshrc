@@ -118,7 +118,7 @@ alias pclean='/home/sahil/Documents/Projects/corona_stats/publish/pipclean.sh'
 alias jup='jupyter notebook 2>/dev/null' 
 alias sim='/home/sahil/Documents/Projects/nand2tetris/tools/HardwareSimulator.sh'
 alias sus="systemctl suspend"
-
+alias cat="bat"
 
 export LS_COLORS="$(vivid generate molokai)"
 fbin() {
@@ -143,7 +143,6 @@ export PATH=$PATH:/home/sahil/.gem/ruby/2.7.0/bin
 export PATH=$PATH:/opt/cuda/bin
 export PATH=$PATH:/home/sahil/.emacs.d/bin
 
-neofetch
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

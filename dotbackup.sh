@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 cp $HOME/{.zshrc,.vimrc,.tmux.conf,.config/alacritty/alacritty.yml} .
 git add --all
