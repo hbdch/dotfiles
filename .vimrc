@@ -42,6 +42,8 @@ nnoremap <Leader>j :wincmd j<Return>
 nnoremap <Leader>k :wincmd k<Return>
 nnoremap <Leader>l :wincmd l<Return>
 nnoremap <Leader>d :bd<Return>
+nnoremap <Leader>+ :vertical resize +5<Return>
+nnoremap <Leader>- :vertical resize -5<Return>
 
 " YCM
 nnoremap <silent> <Leader>gd :YcmCompleter GoTo<Return>
