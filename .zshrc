@@ -117,7 +117,6 @@ alias pbuild='/home/sahil/Documents/Projects/corona_stats/publish/pipbuild.sh'
 alias pclean='/home/sahil/Documents/Projects/corona_stats/publish/pipclean.sh'
 alias jup='jupyter notebook 2>/dev/null' 
 alias sim='/home/sahil/Documents/Projects/nand2tetris/tools/HardwareSimulator.sh'
-alias sus="systemctl suspend"
 alias cat="bat"
 
 export LS_COLORS="$(vivid generate molokai)"
@@ -139,23 +138,4 @@ lstrash() {
 	
 #Other binaries/scripts
 export PATH=$PATH:/home/sahil/Applications/
-export PATH=$PATH:/home/sahil/.gem/ruby/2.7.0/bin
-export PATH=$PATH:/opt/cuda/bin
-export PATH=$PATH:/home/sahil/.emacs.d/bin
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/sahil/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/sahil/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/sahil/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/sahil/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 

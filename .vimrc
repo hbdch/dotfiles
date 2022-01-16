@@ -44,10 +44,6 @@ nnoremap <Leader>d :bd<Return>
 nnoremap <Leader>+ :vertical resize +5<Return>
 nnoremap <Leader>- :vertical resize -5<Return>
 
-" YCM
-nnoremap <silent> <Leader>gd :YcmCompleter GoTo<Return>
-nnoremap <silent> <Leader>gf :YcmCompleter FixIt<Return>
-
 " NERDTree
 nnoremap <silent> <Leader>nt :NERDTree<Return>
 
