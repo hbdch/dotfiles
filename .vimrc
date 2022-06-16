@@ -5,8 +5,10 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'ryanoasis/vim-devicons'
+Plug 'szw/vim-maximizer'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'raimondi/delimitmate'
+Plug 'ryanoasis/vim-devicons' "Needs to be the last one
 call plug#end()
 
 "Appearance
@@ -16,8 +18,8 @@ syntax on
 set background=dark
 
 "Tabs/Spaces
-set tabstop=4 softtabstop=4
-set shiftwidth=4
+set tabstop=2 softtabstop=2
+set shiftwidth=2
 set expandtab
 set smartindent
 
@@ -40,6 +42,7 @@ nnoremap <Leader>h :wincmd h<Return>
 nnoremap <Leader>j :wincmd j<Return>
 nnoremap <Leader>k :wincmd k<Return>
 nnoremap <Leader>l :wincmd l<Return>
+nnoremap <Leader>m :MaximizerToggle<Return>
 nnoremap <Leader>d :bd<Return>
 nnoremap <Leader>+ :vertical resize +5<Return>
 nnoremap <Leader>- :vertical resize -5<Return>

@@ -116,7 +116,6 @@ alias corona='/home/sahil/Documents/Projects/corona_stats/corona_stats.py | less
 alias pbuild='/home/sahil/Documents/Projects/corona_stats/publish/pipbuild.sh'
 alias pclean='/home/sahil/Documents/Projects/corona_stats/publish/pipclean.sh'
 alias jup='jupyter notebook 2>/dev/null' 
-alias sim='/home/sahil/Documents/Projects/nand2tetris/tools/HardwareSimulator.sh'
 alias cat="bat"
 
 export LS_COLORS="$(vivid generate molokai)"
