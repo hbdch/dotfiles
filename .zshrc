@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/sahil/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -14,7 +14,7 @@ ZSH_THEME="robbyrussell"
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
 # If set to an empty array, this variable will have no effect.
-ZSH_THEME_RANDOM_CANDIDATES=( "sunaku" "fletcherm")
+#ZSH_THEME_RANDOM_CANDIDATES=( "sunaku" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -85,7 +85,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -105,20 +105,21 @@ export ARCHFLAGS="-arch x86_64"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-alias zprofile='vim ~/.zshrc'
+alias zprofile="$EDITOR ~/.zshrc"
 alias zrefresh='source ~/.zshrc'
-alias tprofile='vim ~/.tmux.conf'
-alias vprofile='vim ~/.vimrc'
-alias aprofile='vim ~/.config/alacritty/alacritty.yml'
-alias iprofile='vim ~/.config/i3/config'
+alias tprofile="$EDITOR ~/.tmux.conf"
+alias vprofile="$EDITOR ~/.vimrc"
+alias aprofile="$EDITOR ~/.config/alacritty/alacritty.yml"
 
-alias corona='/home/sahil/Documents/Projects/corona_stats/corona_stats.py | less'
-alias pbuild='/home/sahil/Documents/Projects/corona_stats/publish/pipbuild.sh'
-alias pclean='/home/sahil/Documents/Projects/corona_stats/publish/pipclean.sh'
 alias jup='jupyter notebook 2>/dev/null' 
-alias cat="bat"
+
+# https://askubuntu.com/questions/1393204/changing-zsh-autosuggestions-color
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=cyan"
 
 export LS_COLORS="$(vivid generate molokai)"
+export PYTHONBREAKPOINT="web_pdb.set_trace"
+
+
 fbin() {
     find /bin/ -name "*$1*";
 }
@@ -134,7 +135,3 @@ empty() {
 lstrash() {
 	ls ~/.recycle
 }
-	
-#Other binaries/scripts
-export PATH=$PATH:/home/sahil/Applications/
-
