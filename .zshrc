@@ -93,7 +93,7 @@ export LANG=en_US.UTF-8
 # else
 #   export EDITOR='mvim'
 # fi
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
@@ -108,7 +108,7 @@ export ARCHFLAGS="-arch x86_64"
 alias zprofile="$EDITOR ~/.zshrc"
 alias zrefresh='source ~/.zshrc'
 alias tprofile="$EDITOR ~/.tmux.conf"
-alias vprofile="$EDITOR ~/.vimrc"
+alias nvprofile="$EDITOR ~/.config/nvim/init.vim"
 alias aprofile="$EDITOR ~/.config/alacritty/alacritty.yml"
 
 alias jup='jupyter notebook 2>/dev/null' 
