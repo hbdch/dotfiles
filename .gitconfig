@@ -3,7 +3,7 @@
     email = sahil@redleadertech.com
     username = hbdch
 [core]
-    editor = vim
+    editor = nvim
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
     pager = less
 [color]
@@ -26,3 +26,8 @@
 [credential]
 	helper = manager-core
 	credentialStore = plaintext
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

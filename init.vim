@@ -67,6 +67,11 @@ nnoremap <silent> <Leader>f :FZF<Return>
 nnoremap <F8> :TagbarToggle<Return>
 
 " CoC
+nmap <silent> gs :call CocAction('jumpDefinition', 'vsplit')<CR>
+" nmap <silent> gd :call CocAction('jumpDefinition', 'vsplit')<CR>
+" nmap <silent> gt :call CocAction('jumpDefinition', 'tabe')<CR>
+" gt is reserved already
+
 " use <tab> for trigger completion and navigate to the next complete item
 function! CheckBackspace() abort
   let col = col('.') - 1

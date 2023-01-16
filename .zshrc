@@ -112,26 +112,16 @@ alias nvprofile="$EDITOR ~/.config/nvim/init.vim"
 alias aprofile="$EDITOR ~/.config/alacritty/alacritty.yml"
 
 alias jup='jupyter notebook 2>/dev/null' 
-
+alias cf='git ls-files --exclude-standard -om \*{.cpp,.h} | xargs -n 1 clang-format -i --style=Google'
+alias cl='cpplint --recursive ./ | grep -Ev "Done processing|Ignoring"'
 # https://askubuntu.com/questions/1393204/changing-zsh-autosuggestions-color
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=cyan"
 
 export LS_COLORS="$(vivid generate molokai)"
 export PYTHONBREAKPOINT="web_pdb.set_trace"
 
-
 fbin() {
     find /bin/ -name "*$1*";
 }
+export PATH=$PATH:/usr/local/go/bin
 
-rm() {
-	mv "$@" ~/.recycle;	
-}
-
-empty() {
-	sudo /usr/bin/rm -rf ~/.recycle/*
-}
-
-lstrash() {
-	ls ~/.recycle
-}
