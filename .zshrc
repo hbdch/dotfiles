@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="robbyrussell-full"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -80,48 +80,26 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
 export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 export EDITOR='nvim'
-
-# Compilation flags
 export ARCHFLAGS="-arch x86_64"
-
-#List of options for TERM variable: /usr/lib/terminfo
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
 
 alias zprofile="$EDITOR ~/.zshrc"
 alias zrefresh='source ~/.zshrc'
 alias tprofile="$EDITOR ~/.tmux.conf"
-alias nvprofile="$EDITOR ~/.config/nvim/init.vim"
+alias nvprofile="$EDITOR ~/.config/nvim/init.lua"
 alias aprofile="$EDITOR ~/.config/alacritty/alacritty.yml"
 
-alias jup='jupyter notebook 2>/dev/null' 
-alias cf='git ls-files --exclude-standard -om \*{.cpp,.h} | xargs -n 1 clang-format -i --style=Google'
-alias cl='cpplint --recursive ./ | grep -Ev "Done processing|Ignoring"'
 # https://askubuntu.com/questions/1393204/changing-zsh-autosuggestions-color
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=cyan"
-
 export LS_COLORS="$(vivid generate molokai)"
 export PYTHONBREAKPOINT="web_pdb.set_trace"
+export PATH=$PATH:/home/sahil/.local/bin:/usr/local/go/bin
+
+source "$HOME/.cargo/env"
 
 fbin() {
     find /bin/ -name "*$1*";
 }
-export PATH=$PATH:/usr/local/go/bin
 
+ulimit -c unlimited
