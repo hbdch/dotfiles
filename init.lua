@@ -1,50 +1,6 @@
---[[
-
-=====================================================================
-==================== READ THIS BEFORE CONTINUING ====================
-=====================================================================
-
-Kickstart.nvim is *not* a distribution.
-
-Kickstart.nvim is a template for your own configuration.
-  The goal is that you can read every line of code, top-to-bottom, and understand
-  what your configuration is doing.
-
-  Once you've done that, you should start exploring, configuring and tinkering to
-  explore Neovim!
-
-  If you don't know anything about Lua, I recommend taking some time to read through
-  a guide. One possible example:
-  - https://learnxinyminutes.com/docs/lua/
-
-  And then you can explore or search through `:help lua-guide`
-
-
-Kickstart Guide:
-
-I have left several `:help X` comments throughout the init.lua
-You should run that command and read that help section for more information.
-
-In addition, I have some `NOTE:` items throughout the file.
-These are for you, the reader to help understand what is happening. Feel free to delete
-them once you know what you're doing, but they should serve as a guide for when you
-are first encountering a few different constructs in your nvim config.
-
-I hope you enjoy your Neovim journey,
-- TJ
-
-P.S. You can delete this when you're done too. It's your config now :)
---]]
-
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Install package manager
---    https://github.com/folke/lazy.nvim
---    `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -58,13 +14,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- NOTE: Here is where you install your plugins.
---  You can configure plugins using the `config` key.
---
---  You can also configure plugins after the setup call,
---    as they will be available in your neovim runtime.
 require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
 
   -- Git related plugins
   'tpope/vim-fugitive',
@@ -74,18 +24,13 @@ require('lazy').setup({
   'tpope/vim-sleuth',
   'raimondi/delimitmate',
 
+  'navarasu/onedark.nvim',
+
   {
     'chipsenkbeil/distant',
     release = 'v0.1.2',
-    -- config = function()
-    --   require('distant').setup({
-    --     ['*'] = require('distant.settings').chip_default()
-    --   })
-    -- end
   },
 
-  -- NOTE: This is where your plugins related to LSP can be installed.
-  --  The configuration is done below. Search for lspconfig to find it below.
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -95,7 +40,10 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',
+        tag = 'legacy',
+        opts = {}
+      },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -140,10 +88,8 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
-    },
+    main = "ibl",
+    opts = {},
   },
 
   -- "gc" to comment visual regions/lines
@@ -175,25 +121,16 @@ require('lazy').setup({
     end,
   },
 
-  'nvim-tree/nvim-tree.lua',
-  'declancm/maximize.nvim',
-  'nvim-tree/nvim-web-devicons',
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    dependencies = { "nvim-tree/nvim-web-devicons" }
+  },
 
-  -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-  --       These are some example plugins that I've included in the kickstart repository.
-  --       Uncomment any of the lines below to enable them.
-  -- require 'kickstart.plugins.autoformat',
-  -- require 'kickstart.plugins.debug',
-
-  -- NOTE: The import below automatically adds your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-  --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
-  --    up-to-date with whatever is in the kickstart repo.
-  --
-  --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  --
-  --    An additional note is that if you only copied in the `init.lua`, you can just comment this line
-  --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
-  -- { import = 'custom.plugins' },
+  {
+    'declancm/maximize.nvim',
+    opts = {}
+  }
 }, {})
 
 -- [[ Setting options ]]
@@ -243,8 +180,6 @@ vim.o.termguicolors = true
 
 vim.opt.incsearch = true
 
--- [[ Basic Keymaps ]]
-
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -266,6 +201,9 @@ vim.keymap.set('n', '<Leader>h', ':wincmd h<Return>', { noremap = true, silent =
 vim.keymap.set('n', '<Leader>j', ':wincmd j<Return>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>k', ':wincmd k<Return>', { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>l', ':wincmd l<Return>', { noremap = true, silent = true })
+
+vim.keymap.set('n', '<Leader>m', "<Cmd>lua require('maximize').toggle()<CR>", { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>o', "<Cmd>Oil --float<CR>", { noremap = true, silent = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -316,7 +254,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'help', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vim' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
@@ -520,110 +458,12 @@ cmp.setup {
   },
 }
 
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
-
-
 vim.g.nvim_tree_gitignore = 0
 
-vim.keymap.set('n', '<Leader>nt', ':NvimTreeToggle<Return>', { noremap = true, silent = true })
-require('maximize').setup({})
-vim.keymap.set('n', '<Leader>m', "<Cmd>lua require('maximize').toggle()<CR>", { noremap = true, silent = true })
-
-local function nvim_tree_on_attach(bufnr)
-  local api = require('nvim-tree.api')
-
-  local function opts(desc)
-    return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-  end
-
-  -- Default mappings. Feel free to modify or remove as you wish.
-  --
-  -- BEGIN_DEFAULT_ON_ATTACH
-  vim.keymap.set('n', '<C-]>', api.tree.change_root_to_node,          opts('CD'))
-  vim.keymap.set('n', '<C-e>', api.node.open.replace_tree_buffer,     opts('Open: In Place'))
-  vim.keymap.set('n', '<C-k>', api.node.show_info_popup,              opts('Info'))
-  vim.keymap.set('n', '<C-r>', api.fs.rename_sub,                     opts('Rename: Omit Filename'))
-  vim.keymap.set('n', '<C-t>', api.node.open.tab,                     opts('Open: New Tab'))
-  vim.keymap.set('n', '<C-v>', api.node.open.vertical,                opts('Open: Vertical Split'))
-  vim.keymap.set('n', '<C-x>', api.node.open.horizontal,              opts('Open: Horizontal Split'))
-  vim.keymap.set('n', '<BS>',  api.node.navigate.parent_close,        opts('Close Directory'))
-  vim.keymap.set('n', '<CR>',  api.node.open.edit,                    opts('Open'))
-  vim.keymap.set('n', '<Tab>', api.node.open.preview,                 opts('Open Preview'))
-  vim.keymap.set('n', '>',     api.node.navigate.sibling.next,        opts('Next Sibling'))
-  vim.keymap.set('n', '<',     api.node.navigate.sibling.prev,        opts('Previous Sibling'))
-  vim.keymap.set('n', '.',     api.node.run.cmd,                      opts('Run Command'))
-  vim.keymap.set('n', '-',     api.tree.change_root_to_parent,        opts('Up'))
-  vim.keymap.set('n', 'a',     api.fs.create,                         opts('Create'))
-  vim.keymap.set('n', 'bmv',   api.marks.bulk.move,                   opts('Move Bookmarked'))
-  vim.keymap.set('n', 'B',     api.tree.toggle_no_buffer_filter,      opts('Toggle No Buffer'))
-  vim.keymap.set('n', 'c',     api.fs.copy.node,                      opts('Copy'))
-  vim.keymap.set('n', 'C',     api.tree.toggle_git_clean_filter,      opts('Toggle Git Clean'))
-  vim.keymap.set('n', '[c',    api.node.navigate.git.prev,            opts('Prev Git'))
-  vim.keymap.set('n', ']c',    api.node.navigate.git.next,            opts('Next Git'))
-  vim.keymap.set('n', 'd',     api.fs.remove,                         opts('Delete'))
-  vim.keymap.set('n', 'D',     api.fs.trash,                          opts('Trash'))
-  vim.keymap.set('n', 'E',     api.tree.expand_all,                   opts('Expand All'))
-  vim.keymap.set('n', 'e',     api.fs.rename_basename,                opts('Rename: Basename'))
-  vim.keymap.set('n', ']e',    api.node.navigate.diagnostics.next,    opts('Next Diagnostic'))
-  vim.keymap.set('n', '[e',    api.node.navigate.diagnostics.prev,    opts('Prev Diagnostic'))
-  vim.keymap.set('n', 'F',     api.live_filter.clear,                 opts('Clean Filter'))
-  vim.keymap.set('n', 'f',     api.live_filter.start,                 opts('Filter'))
-  vim.keymap.set('n', 'g?',    api.tree.toggle_help,                  opts('Help'))
-  vim.keymap.set('n', 'gy',    api.fs.copy.absolute_path,             opts('Copy Absolute Path'))
-  vim.keymap.set('n', 'H',     api.tree.toggle_hidden_filter,         opts('Toggle Dotfiles'))
-  vim.keymap.set('n', 'I',     api.tree.toggle_gitignore_filter,      opts('Toggle Git Ignore'))
-  vim.keymap.set('n', 'J',     api.node.navigate.sibling.last,        opts('Last Sibling'))
-  vim.keymap.set('n', 'K',     api.node.navigate.sibling.first,       opts('First Sibling'))
-  vim.keymap.set('n', 'm',     api.marks.toggle,                      opts('Toggle Bookmark'))
-  vim.keymap.set('n', 'o',     api.node.open.edit,                    opts('Open'))
-  vim.keymap.set('n', 'O',     api.node.open.no_window_picker,        opts('Open: No Window Picker'))
-  vim.keymap.set('n', 'p',     api.fs.paste,                          opts('Paste'))
-  vim.keymap.set('n', 'P',     api.node.navigate.parent,              opts('Parent Directory'))
-  vim.keymap.set('n', 'q',     api.tree.close,                        opts('Close'))
-  vim.keymap.set('n', 'r',     api.fs.rename,                         opts('Rename'))
-  vim.keymap.set('n', 'R',     api.tree.reload,                       opts('Refresh'))
-  vim.keymap.set('n', 's',     api.node.run.system,                   opts('Run System'))
-  vim.keymap.set('n', 'S',     api.tree.search_node,                  opts('Search'))
-  vim.keymap.set('n', 'U',     api.tree.toggle_custom_filter,         opts('Toggle Hidden'))
-  vim.keymap.set('n', 'W',     api.tree.collapse_all,                 opts('Collapse'))
-  vim.keymap.set('n', 'x',     api.fs.cut,                            opts('Cut'))
-  vim.keymap.set('n', 'y',     api.fs.copy.filename,                  opts('Copy Name'))
-  vim.keymap.set('n', 'Y',     api.fs.copy.relative_path,             opts('Copy Relative Path'))
-  vim.keymap.set('n', '<2-LeftMouse>',  api.node.open.edit,           opts('Open'))
-  vim.keymap.set('n', '<2-RightMouse>', api.tree.change_root_to_node, opts('CD'))
-  -- END_DEFAULT_ON_ATTACH
 
 
-  -- Mappings migrated from view.mappings.list
-  --
-  -- You will need to insert "your code goes here" for any mappings with a custom action_cb
-  vim.keymap.set('n', 'u', api.tree.change_root_to_parent, opts('Up'))
-
-end
-
-require("nvim-tree").setup({
-  sort_by = "case_sensitive",
-  on_attach = nvim_tree_on_attach,
-  view = {
-    width = 30,
-    mappings = {
-      list = {
-        { key = "u", action = "dir_up" },
-      },
-    },
-  },
-  renderer = {
-    group_empty = true,
-  },
-  filters = {
-    dotfiles = true,
-  },
-})
-
--- Lua
 require('onedark').load()
-
+require("ibl").setup()
 require'nvim-web-devicons'.setup {
  override = {
   zsh = {

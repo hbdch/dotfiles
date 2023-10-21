@@ -3,8 +3,8 @@ env:
 
 window:
   dimensions:
-    columns: 100
-    lines: 30
+    columns: 150
+    lines: 40
   dynamic_padding: true
   decorations: full
   title: Alacritty
@@ -19,15 +19,15 @@ scrolling:
   auto_scroll: false
 
 font:
-  size: 13
+  size: 16
   normal:
-    family: JetBrainsMono
+    family: DroidSansM Nerd Font
   bold:
-    family: JetBrainsMono
+    family: DroidSansM Nerd Font
   italic:
-    family: JetBrainsMono
+    family: DroidSansM Nerd Font
   bold_italic:
-    family: JetBrainsMono
+    family: DroidSansM Nerd Font
     size: 14.0
 
   draw_bold_text_with_bright_colors: true
