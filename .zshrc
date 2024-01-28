@@ -24,7 +24,7 @@ alias zprofile="$EDITOR ~/.zshrc"
 alias zrefresh='source ~/.zshrc'
 alias tprofile="$EDITOR ~/.tmux.conf"
 alias nvprofile="$EDITOR ~/.config/nvim/init.lua"
-alias aprofile="$EDITOR ~/.config/alacritty/alacritty.yml"
+alias aprofile="$EDITOR ~/.config/alacritty/alacritty.toml"
 
 # https://askubuntu.com/questions/1393204/changing-zsh-autosuggestions-color
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=cyan"
