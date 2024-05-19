@@ -81,16 +81,19 @@ require('lazy').setup({
         component_separators = '|',
         section_separators = '',
       },
+      sections = {
+        lualine_c = { '%f' } -- Display the full file path
+      },
     },
   },
 
-  { -- Add indentation guides even on blank lines
-    'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help indent_blankline.txt`
-    main = "ibl",
-    opts = {},
-  },
+  -- { -- Add indentation guides even on blank lines
+  --   'lukas-reineke/indent-blankline.nvim',
+  --   -- Enable `lukas-reineke/indent-blankline.nvim`
+  --   -- See `:help indent_blankline.txt`
+  --   main = "ibl",
+  --   opts = {},
+  -- },
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
@@ -373,10 +376,9 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  clangd = {
-    cmd = {'clangd', '-config-file=~/.config/clangd/config.yaml'}
-  },
+  clangd = {},
   pyright = {},
+  rust_analyzer = {},
 
   lua_ls = {
     Lua = {
@@ -463,7 +465,7 @@ vim.g.nvim_tree_gitignore = 0
 
 
 require('onedark').load()
-require("ibl").setup()
+--require("ibl").setup()
 require'nvim-web-devicons'.setup {
  override = {
   zsh = {

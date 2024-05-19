@@ -1,6 +1,6 @@
 [user]
     name = Sahil Katrekar
-    email = sahil@redleadertech.com
+    email = sahilkatrekar@gmail.com
     username = hbdch
 [core]
     editor = nvim
@@ -18,17 +18,9 @@
     tool = vimdiff
 [alias]
     a = add --all
-	br = branch
+    br = branch
     ci = commit
     co = checkout
     st = status
     rb = rebase
     lg = log --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %C(white)- %an, %ar%Creset'
-[credential]
-	helper = manager-core
-	credentialStore = plaintext
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
