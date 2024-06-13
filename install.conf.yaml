@@ -13,6 +13,7 @@
     ~/.zshrc: .zshrc
     ~/.tmux.conf: .tmux.conf
     ~/.gitconfig: .gitconfig
+    ~/.gdbinit: .gdbinit
     ~/.config/alacritty/alacritty.toml: alacritty.toml
     ~/.config/nvim/init.lua: init.lua
 
