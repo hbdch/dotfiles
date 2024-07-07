@@ -7,12 +7,14 @@ ZSH_THEME="robbyrussell"
 plugins=(
 	archlinux
 	colored-man-pages
-	git
-	zsh-autosuggestions
+	dirhistory
 	python
 	web-search
 	vi-mode
-	z)
+	z
+	zsh-autosuggestions
+	zsh-syntax-highlighting # Must be the last one
+	)
 
 source $ZSH/oh-my-zsh.sh
 

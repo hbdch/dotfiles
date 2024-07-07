@@ -230,7 +230,7 @@ require('telescope').setup {
       },
     },
   },
-  file_ignore_patterns = {'build', ".git"}
+  file_ignore_patterns = {'build', ".git/*"}
 }
 
 -- Enable telescope fzf native, if installed
