@@ -7,7 +7,6 @@
 
 - create:
     - ~/.config/alacritty
-    - ~/.config/nvim
     - ~/.config/neofetch
 
 - link:
@@ -16,7 +15,7 @@
     ~/.gitconfig: .gitconfig
     ~/.gdbinit: .gdbinit
     ~/.config/alacritty/alacritty.toml: alacritty.toml
-    ~/.config/nvim/init.lua: init.lua
+    ~/.config/nvim: nvim
     ~/.config/neofetch/config.conf: neofetch.conf
 
 - shell:
