@@ -16,6 +16,10 @@
     ui = true
 [diff]
     tool = vimdiff
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
 [alias]
     a = add --all
     br = branch
@@ -24,3 +28,21 @@
     st = status
     rb = rebase
     lg = log --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %C(white)- %an, %ar%Creset'
+[push]
+    autoSetupRemote = true
+    default = current
+    followTags = true
+[column]
+    ui = auto
+[branch]
+    sort = -committerdate
+[tag]
+    sort = version:refname
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
+[commit]
+    verbose = true
+[pull]
+    rebase = true

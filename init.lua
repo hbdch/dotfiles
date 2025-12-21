@@ -1,3 +1,4 @@
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -48,6 +49,10 @@ require('lazy').setup({
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
     },
+  },
+
+  {
+    'mhartington/formatter.nvim'
   },
 
   { -- Autocompletion
@@ -256,7 +261,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'vim' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
@@ -375,13 +380,45 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  clangd = {},
-  pyright = {},
-  rust_analyzer = {},
+  clangd = {
+    cmd = { "clangd", "--query-driver=**" },
+  },
+  rust_analyzer = {
+    settings = {
+      cargo = {
+        features = { "fleet-config" },
+      },
+    },
+  },
+  gopls = {},
+
+  nil_ls = {
+    ['nil'] = {
+      formatting = {
+        command = { 'nixfmt' },
+      }
+    }
+  },
 
   lua_ls = {
     Lua = {
-      workspace = { checkThirdParty = false },
+      root_dir = function()
+        return vim.fn.getcwd()
+      end,
+
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+        checkThirdParty = false
+      },
       telemetry = { enable = false },
     },
   },
@@ -404,15 +441,27 @@ mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
 }
 
-mason_lspconfig.setup_handlers {
+mason_lspconfig.setup_handlers({
   function(server_name)
-    require('lspconfig')[server_name].setup {
+    local server_config = {
       capabilities = capabilities,
       on_attach = on_attach,
-      settings = servers[server_name],
     }
+
+    -- Include the 'cmd' from the 'servers' table if it exists
+    if servers[server_name] and servers[server_name].cmd then
+      server_config.cmd = servers[server_name].cmd
+    end
+
+    -- Include the 'settings' from the 'servers' table if it exists
+    if servers[server_name] and servers[server_name].settings then
+      server_config.settings = servers[server_name].settings
+    end
+
+    -- Set up the LSP server with the combined configuration
+    require('lspconfig')[server_name].setup(server_config)
   end,
-}
+})
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
