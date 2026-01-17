@@ -4,6 +4,9 @@
       force: true
 
 - clean: ['~']
+- clean:
+    ~/.config:
+      recursive: true
 
 - create:
     - ~/.config/alacritty
