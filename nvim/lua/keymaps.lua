@@ -43,3 +43,10 @@ vim.keymap.set('n', '<Leader>h', '<C-w><C-h>', { desc = 'Move focus to the left 
 vim.keymap.set('n', '<Leader>l', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<Leader>j', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<Leader>k', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+-- Keybinds to resize splits
+--  Using capital H, J, K, L with leader to resize the current window by 5 units
+vim.keymap.set('n', '<Leader>H', '<cmd>vertical resize -5<CR>', { desc = 'Make window narrower', silent = true })
+vim.keymap.set('n', '<Leader>L', '<cmd>vertical resize +5<CR>', { desc = 'Make window wider', silent = true })
+vim.keymap.set('n', '<Leader>K', '<cmd>resize +5<CR>', { desc = 'Make window taller', silent = true })
+vim.keymap.set('n', '<Leader>J', '<cmd>resize -5<CR>', { desc = 'Make window shorter', silent = true })
