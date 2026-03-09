@@ -34,8 +34,5 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=cyan"
 export LS_COLORS="$(vivid generate molokai)"
 export PYTHONBREAKPOINT="web_pdb.set_trace"
 
-fbin() {
-    find /bin/ -name "*$1*";
-}
-
 ulimit -c unlimited
+source <(fzf --zsh)
