@@ -2,13 +2,13 @@ alacritty
 ascii
 bat
 curl
+fastfetch
 ffmpeg
 file
 fzf
 git
 htop
 ncdu
-neofetch
 neovim
 ripgrep
 timeshift

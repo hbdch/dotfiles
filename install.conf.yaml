@@ -10,7 +10,6 @@
 
 - create:
     - ~/.config/alacritty
-    - ~/.config/neofetch
 
 - link:
     ~/.zshrc: .zshrc
@@ -19,7 +18,6 @@
     ~/.gdbinit: .gdbinit
     ~/.config/alacritty/alacritty.toml: alacritty.toml
     ~/.config/nvim: nvim
-    ~/.config/neofetch/config.conf: neofetch.conf
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
